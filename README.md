@@ -1,6 +1,9 @@
 # Regional Attention Based Deep Feature for Image Retrieval
 
 
+###Training datasets 
+We use ImageNet dataset for training the regional attention network and Landmark dataset for learning PCA parameters of off-the-shelf Resnet101. 
+
 **Trained weights**
 ```
 >>mkdir weights
@@ -11,7 +14,9 @@
 ```
 
 
-
+###Test datasets
+The code is prepared for testing with Oxford5k and Paris6k. 
+Oxford105k and Paris106k can be easily expanded by adding flickr_100k images into the jpg folder existing in Paris6k and Oxford5k folders. 
 **Evaluation:**
 ```
 >>mkdir datasets
