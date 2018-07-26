@@ -72,7 +72,7 @@ cd ../..
 
 ### Training datasets
 
-We use ImageNet dataset for training the regional attention network and Landmark dataset for learning PCA parameters of off-the-shelf Resnet101. 
+We use ImageNet dataset for training the regional attention network and Landmark dataset for learning PCA parameters of off-the-shelf Resnet101. But, we do not publish the code for learning the PCA since Landmark dataset continues to be harmed by broken URLs of images. As an alternative, you can use our uploaded PCA weights.
 
 **ImageNet**
 ```
