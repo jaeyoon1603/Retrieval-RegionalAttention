@@ -14,13 +14,9 @@ Dependency
 
 Build datasets
 --------------------------------------------------------------------------------------------------
-### Training datasets
-
-We use ImageNet dataset for training the regional attention network and Landmark dataset for learning PCA parameters of off-the-shelf Resnet101. 
-
-**ImageNet**
-
-**Landmark**
+### Test datasets
+The code is prepared for testing with Oxford5k and Paris6k. 
+Oxford105k and Paris106k can be easily expanded by adding flickr_100k images into the jpg folder existing in Paris6k and Oxford5k folders. 
 
 **Trained weights:**
 ```
@@ -30,11 +26,6 @@ wget --no-check-certificate https://sglab.kaist.ac.kr/RegionalAttention/weights.
 tar -xvf weights.tar
 cd ..
 ```
-
-
-### Test datasets
-The code is prepared for testing with Oxford5k and Paris6k. 
-Oxford105k and Paris106k can be easily expanded by adding flickr_100k images into the jpg folder existing in Paris6k and Oxford5k folders. 
 
 **Evaluation:**
 ```
@@ -78,6 +69,19 @@ wget http://www.robots.ox.ac.uk/~vgg/data/parisbuildings/paris_120310.tgz
 tar -xzf paris_120310.tgz -C lab
 cd ../..
 ```
+
+### Training datasets
+
+We use ImageNet dataset for training the regional attention network and Landmark dataset for learning PCA parameters of off-the-shelf Resnet101. 
+
+**ImageNet**
+
+**Landmark**
+
+
+
+
+
 
 How to use the code
 --------------------------------------------------------------------------------------------------
