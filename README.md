@@ -43,7 +43,8 @@ cd datasets
 mkdir evaluation
 cd evaluation
 wget http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/compute_ap.cpp
-g++ -O compute_ap.cpp -o compute_ap
+sed -i '6i#include <cstdlib>' compute_ap.cpp # Add cstdlib, as some compilers will produce an error otherwise
+g++ -o compute_ap compute_ap.cpp
 cd ../..
 ```
 
