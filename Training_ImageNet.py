@@ -244,7 +244,7 @@ if __name__ == '__main__':
     
     means = np.array([103.93900299, 116.77899933, 123.68000031], dtype=np.float32)[None, :, None, None]
     gpu_num = 0
-    ImageNet_path = '/mnt/users/jaepilheo/jaeyoon/ImageNet/'
+    ImageNet_path = 'ImageNet/'
     transform = transforms.Compose([
         transforms.Lambda(lambda x: __resize(x,np.random.randint(10)+850)),
         transforms.RandomCrop(800),
