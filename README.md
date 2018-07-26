@@ -14,7 +14,10 @@
 
 **Evaluation:**
 ```
->>cd datasets/evaluation
+>>mkdir datasets
+>>cd datasets
+>>mkdir evaluation
+>>cd evaluation
 >>wget http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/compute_ap.cpp
 >>g++ -O compute_ap.cpp -o compute_ap
 >>cd ../..
@@ -22,7 +25,10 @@
 
 **Oxford:**
 ```
->>cd datasets/Oxford
+>>cd datasets
+>>mkdir Oxford
+>>cd Oxford
+>>mkdir jpg lab
 >>wget http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/oxbuild_images.tgz
 >>tar -xzf oxbuild_images.tgz -C jpg
 >>wget http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/gt_files_170407.tgz
@@ -32,8 +38,10 @@
 
 **Paris**
 ```
->>cd datasets/Paris
->>mkdir tmp
+>>cd datasets
+>>mkdir Paris
+>>cd Paris
+>>mkdir tmp jpg lab
 # Images are in a different folder structure, need to move them around
 >>wget http://www.robots.ox.ac.uk/~vgg/data/parisbuildings/paris_1.tgz
 >>wget http://www.robots.ox.ac.uk/~vgg/data/parisbuildings/paris_2.tgz
