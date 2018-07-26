@@ -100,13 +100,13 @@ How to use the code
 For testing, 
 ```
 #When testing with Oxford dataset
-python Measure_OxfordParis.py --dataset Oxford
+python Test_OxfordParis.py --dataset Oxford
 #When testing with Paris dataset
-python Measure_OxfordParis.py --dataset Paris
+python Test_OxfordParis.py --dataset Paris
 ```
 For training regional attention network,
 ```
-python Training_ImageNet.py
+python Train_ImageNet.py
 ```
 
 Citation
