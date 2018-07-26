@@ -82,9 +82,9 @@ How to use the code
 --------------------------------------------------------------------------------------------------
 For testing, 
 ```
-#With Oxford dataset
+#When testing with Oxford dataset
 python Measure_OxfordParis.py --dataset Oxford
-#With Paris dataset
+#When testing with Paris dataset
 python Measure_OxfordParis.py --dataset Paris
 ```
 For training regional attention network,
