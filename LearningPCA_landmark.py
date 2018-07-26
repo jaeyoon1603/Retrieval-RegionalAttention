@@ -93,7 +93,7 @@ class LandmarkDataset:
 if __name__ == '__main__':
     gpu_num = 0
     
-    dataSet_train = LandmarkDataset(dir='landmark/train')
+    dataSet_train = LandmarkDataset(dir='datasets/Landmark/train')
 
     net = R_MACNet()
     net.eval()
