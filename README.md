@@ -5,7 +5,7 @@
 ```sh
 mkdir weights
 cd weights
-wget https://sglab.kaist.ac.kr/RegionalAttention/weights.tar
+wget --no-check-certificate https://sglab.kaist.ac.kr/RegionalAttention/weights.tar
 tar -xzf weights.tar
 cd ..
 ```
