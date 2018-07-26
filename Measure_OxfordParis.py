@@ -310,7 +310,7 @@ if __name__ == '__main__':
     parser.set_defaults(multires=False)
     args = parser.parse_args()
     
-    gpu_num = 1
+    gpu_num = 0
     S = 1024 #Maximum dimension
     dataset_path = 'datasets/' + args.dataset
     eval_binary = 'datasets/evaluation/compute_ap'
