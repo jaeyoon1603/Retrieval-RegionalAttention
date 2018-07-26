@@ -343,6 +343,7 @@ if __name__ == '__main__':
     dataset.score(sim, temp_dir, eval_binary)
 
     # query expansion with top-5 results
+    print("Query expansion...")
     top_k = 5
     idx = np.argsort(sim, axis=1)[:, ::-1]
     qe_features_queries = normalize(np.vstack(
