@@ -1,11 +1,28 @@
 # Regional Attention Based Deep Feature for Image Retrieval
 
+**Regional Attention Based Deep Feature for Image Retrieval (BMVC 2018)**
+*Jaeyoon Kim and Sung-Eui Yoon*
 
-### Training datasets:
+The project page is in https://sglab.kaist.ac.kr/RegionalAttention/
+
+Most of the code, such as evaluation code, R-MAC code, etc, are built upon [Deep Image Retrieval (ECCV, 2016)](https://github.com/figitaki/deep-retrieval).
+
+Dependency
+--------------------------------------------------------------------------------------------------
+`Pytorch`
+
+
+Build datasets
+--------------------------------------------------------------------------------------------------
+### Training datasets
 
 We use ImageNet dataset for training the regional attention network and Landmark dataset for learning PCA parameters of off-the-shelf Resnet101. 
 
-**Trained weights**
+**ImageNet**
+
+**Landmark**
+
+**Trained weights:**
 ```
 mkdir weights
 cd weights
@@ -15,10 +32,10 @@ cd ..
 ```
 
 
-### Test datasets:
-
+### Test datasets
 The code is prepared for testing with Oxford5k and Paris6k. 
 Oxford105k and Paris106k can be easily expanded by adding flickr_100k images into the jpg folder existing in Paris6k and Oxford5k folders. 
+
 **Evaluation:**
 ```
 mkdir datasets
@@ -43,7 +60,7 @@ tar -xzf gt_files_170407.tgz -C lab
 cd ../..
 ```
 
-**Paris**
+**Paris:**
 ```
 cd datasets
 mkdir Paris
@@ -77,4 +94,18 @@ python Training_ImageNet.py
 For learning PCA,
 ```
 python LearningPCA_landmark.py
+```
+Citation
+--------------------------------------------------------------------------------------------------
+Please cite this paper if you use this code in an academic publication.
+```
+@InProceedings{retrieval:BMVC:2018,
+  author  = {Jaeyoon Kim and Sung-Eui Yoon},
+  title   = {Regional Attention Based Deep Feature for Image Retrieval},
+  booktitle = {Proc. British Machine Vision Conference (BMVC 2018)},
+  address = {Newcastle, England},
+  year = {2018},
+  pages = {},
+  volume  = {},
+}
 ```
