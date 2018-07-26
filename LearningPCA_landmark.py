@@ -60,14 +60,6 @@ class LandmarkDataset:
     def __init__(self, dir):
         self.dir = dir
         self.data_name_list = np.sort(os.listdir(self.dir + '/data'))
-        self.cluster_id = map(lambda x: int(x.split('_')[0]), self.data_name_list)
-        self.num_cluster = [0] * (self.cluster_id[-1] + 1)
-        for i in range(len(self.cluster_id)):
-            self.num_cluster[self.cluster_id[i]] += 1
-        self.cluster = []
-        for i in range(self.cluster_id[-1] + 1):
-            offset = sum(self.num_cluster[:i])
-            self.cluster.append(range(offset, offset + self.num_cluster[i]))
 
 
     def load_and_prepare_image(self, fname, S, means):
