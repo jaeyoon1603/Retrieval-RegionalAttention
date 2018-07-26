@@ -48,9 +48,12 @@
 
 How to use the code
 --------------------------------------------------------------------------------------------------
-For testing with Oxford and Paris, 
+For testing, 
 ```
->> Python Measure_OxfordParis.py
+#With Oxford dataset
+>> Python Measure_OxfordParis.py --dataset Oxford
+#With Paris dataset
+>> Python Measure_OxfordParis.py --dataset Paris
 ```
 For training regional attention network,
 ```
