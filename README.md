@@ -1,6 +1,16 @@
 # Regional Attention Based Deep Feature for Image Retrieval
 
 
+**trained weights**
+```sh
+mkdir weights
+cd weights
+wget https://sglab.kaist.ac.kr/RegionalAttention/weights.tar
+tar -xzf weights.tar
+cd ..
+```
+
+
 
 **Evaluation:**
 ```sh
