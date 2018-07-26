@@ -305,13 +305,14 @@ def extract_features(dataset, image_helper, net, gpu_num):
     return features_queries, features_dataset
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Evaluate Oxford / Paris')
+    parser.add_argument('--dataset', type=str, required=True, help='Choose the Oxford or Paris')
+    parser.set_defaults(multires=False)
+    args = parser.parse_args()
+    
     gpu_num = 1
     S = 1024 #Maximum dimension
-
-    dataset_path = 'datasets/Oxford'
-    #Remove below annotation when testing with Paris dataset
-    #dataset_path = 'datasets/Paris'
-
+    dataset_path = 'datasets/' + args.dataset
     eval_binary = 'datasets/evaluation/compute_ap'
     temp_dir = 'temp'
     weight_path = 'weights/ContextAwareRegionalAttention_weights.pth'
