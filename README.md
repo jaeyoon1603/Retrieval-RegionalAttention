@@ -88,8 +88,8 @@ find . -name "*.tar" | while read NAME ; do mkdir -p "${NAME%.tar}"; tar -xvf "$
 cd ..
 cd val
 mkdir data
-#####Need to download 'ILSVRC2012_img_train.tar' in http://www.image-net.org/ and move it to this directory#####
-tar -xzf ILSVRC2012_img_train.tar -C data
+#####Need to download 'ILSVRC2012_img_val.tar' in http://www.image-net.org/ and move it to this directory#####
+tar -xzf ILSVRC2012_img_val.tar -C data
 ```
 
 **Landmark**
