@@ -78,6 +78,7 @@ We use ImageNet dataset for training the regional attention network and Landmark
 ```
 cd datasets
 mkdir ImageNet
+cd ImageNet
 mkdir train val
 cd train
 mkdir data
@@ -93,7 +94,13 @@ tar -xzf ILSVRC2012_img_val.tar -C data
 ```
 
 **Landmark**
-
+```
+cd datasets
+mkdir Landmark
+cd Landmark
+mkdir train
+##### #####
+```
 
 
 
