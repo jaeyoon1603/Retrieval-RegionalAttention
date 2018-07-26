@@ -9,7 +9,7 @@ Most of the code, such as evaluation code, R-MAC code, etc, are built upon [Deep
 
 Dependency
 --------------------------------------------------------------------------------------------------
-`Pytorch`, 0.3.0 required.
+`Pytorch`, 0.3.0
 
 
 Build datasets
