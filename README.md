@@ -75,6 +75,22 @@ cd ../..
 We use ImageNet dataset for training the regional attention network and Landmark dataset for learning PCA parameters of off-the-shelf Resnet101. 
 
 **ImageNet**
+```
+cd datasets
+mkdir ImageNet
+mkdir train val
+cd train
+mkdir data
+#####Need to download 'ILSVRC2012_img_train.tar' in http://www.image-net.org/ and move it to this directory#####
+tar -xzf ILSVRC2012_img_train.tar -C data
+cd data
+find . -name "*.tar" | while read NAME ; do mkdir -p "${NAME%.tar}"; tar -xvf "${NAME}" -C "${NAME%.tar}"; rm -f "${NAME}"; done
+cd ..
+cd val
+mkdir data
+#####Need to download 'ILSVRC2012_img_train.tar' in http://www.image-net.org/ and move it to this directory#####
+tar -xzf ILSVRC2012_img_train.tar -C data
+```
 
 **Landmark**
 
