@@ -6,7 +6,7 @@
 mkdir weights
 cd weights
 wget --no-check-certificate https://sglab.kaist.ac.kr/RegionalAttention/weights.tar
-tar -xzf weights.tar
+tar -xvf weights.tar
 cd ..
 ```
 
