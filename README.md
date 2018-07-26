@@ -108,10 +108,7 @@ For training regional attention network,
 ```
 python Training_ImageNet.py
 ```
-For learning PCA,
-```
-python LearningPCA_landmark.py
-```
+
 Citation
 --------------------------------------------------------------------------------------------------
 Please cite this paper if you use this code in an academic publication.
