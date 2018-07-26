@@ -93,17 +93,6 @@ mkdir data
 tar -xzf ILSVRC2012_img_val.tar -C data
 ```
 
-**Landmark**
-```
-cd datasets
-mkdir Landmark
-cd Landmark
-mkdir train
-##### #####
-```
-
-
-
 
 
 How to use the code
