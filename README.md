@@ -91,6 +91,9 @@ cd val
 mkdir data
 #####Need to download 'ILSVRC2012_img_val.tar' in http://www.image-net.org/ and move it to this directory#####
 tar -xzf ILSVRC2012_img_val.tar -C data
+wget -c http://dl.caffe.berkeleyvision.org/caffe_ilsvrc12.tar.gz #Only validation set needs its label list.
+tar -xf caffe_ilsvrc12.tar.gz val.txt && rm -f caffe_ilsvrc12.tar.gz 
+cd ../../..
 ```
 
 
