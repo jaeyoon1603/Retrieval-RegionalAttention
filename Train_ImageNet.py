@@ -9,9 +9,9 @@ from sklearn.preprocessing import normalize
 from os import listdir
 from os.path import join
 import Resnet
+import random
 from tqdm import tqdm
 import cv2
-import random
 from torchvision import transforms
 from Common import get_rmac_region_coordinates
 from Common import pack_regions_for_network
@@ -244,8 +244,6 @@ def validation(net,dataSet_val ,gpu_num):
         _, preds = torch.max(outs.data, 1)
         running_corrects += torch.sum(preds == labels.data)
         
-
-    print(running_corrects)
     return float(running_corrects)/float(len(dataSet))
         
 
@@ -282,12 +280,10 @@ if __name__ == '__main__':
     criterion =nn.CrossEntropyLoss()
     dataSet_size = len(dataSet_train)
     running_corrects = 0
-    k = 0
     num_epoch = 1
     max_iterations = 999999
     optimizer_ft.zero_grad()
     for i in tqdm(range(max_iterations)):
-        k= k+1
         inputs_list = []
         labels_list = []
         input_num = []
@@ -310,7 +306,7 @@ if __name__ == '__main__':
         loss.backward()
         
         #Perform parameter-update with batch size of 16 
-        if (k+1)% 4 ==0:
+        if (i+1)% 4 ==0:
             optimizer_ft.step()
             optimizer_ft.zero_grad()
 
@@ -318,14 +314,13 @@ if __name__ == '__main__':
 
 
         #Make a check-point per 1600 iterations and validate the accuracy of network.
-        if k > 1600:
-            train_acc = running_corrects / (k*batchsize)
-            print('train Acc : ' + str(train_acc))
+        if (i+1) % 1600 == 0:
+            train_acc = float(running_corrects) / float(1600*miniBatch_size)
             val_acc = validation(net, dataSet_val, gpu_num)
+            print('train Acc : ' + str(train_acc))
             print('val Acc : ' + str(val_acc))
             dic = net.region_attention.state_dict()
             torch.save(dic, 'weights/ContextAwareRegionalAttention_weights_'+str(num_epoch)+'_'+str(val_acc)+'.pth')
-            k = 0
             running_corrects = 0
             num_epoch = num_epoch + 1
         
