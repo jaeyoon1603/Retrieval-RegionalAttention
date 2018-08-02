@@ -151,19 +151,30 @@ class NetForTraining(nn.Module):
 
 
 class ImageNetDataset(torch.utils.data.Dataset):
-    def __init__(self,dir,transform, means):
+    def __init__(self,dir,transform, means, train_or_val):
         super(ImageNetDataset, self).__init__()
         self.means = means
         self.transform = transform
         self.dir = dir
-        self.class_name_list =  np.sort(os.listdir(self.dir+'/data'))
-        self.data_name_list = []
-        self.cluster_id = []
-        for i in range(len(self.class_name_list)):
-            datas = map(lambda x: self.class_name_list[i]+'/'+x ,np.sort(os.listdir(self.dir+'/data/'+self.class_name_list[i])))
-            self.data_name_list = self.data_name_list + datas# with class
-            #if len(datas) !=0:
-            self.cluster_id = self.cluster_id + [i]*len(datas)
+        if train_or_val == 'val':
+            self.data_name_list = np.sort(os.listdir(dir+'/data'))
+            self.data_name_list = np.sort(random.sample(self.data_name_list,10000))  # Reduce # of datas by sampling
+            with open(dir+'/val.txt') as f:
+                meta = f.readlines()
+            meta = map(lambda x: x.split(), meta)
+            self.cluster_id = []
+            for i in range(len(self.data_name_list)):
+                index = int(self.data_name_list[i].split('_')[2][:-5]) - 1 
+                self.cluster_id = self.cluster_id + [int(meta[index][1])]
+        elif  train_or_val == 'train':
+            class_name_list =  np.sort(os.listdir(self.dir+'/data'))
+            self.data_name_list = []
+            self.cluster_id = []
+            for i in range(len(class_name_list)):
+                datas = map(lambda x: class_name_list[i]+'/'+x ,np.sort(os.listdir(self.dir+'/data/'+class_name_list[i])))
+                self.data_name_list = self.data_name_list + datas# with class
+                self.cluster_id = self.cluster_id + [i]*len(datas)
+        
         
 
     
@@ -173,20 +184,17 @@ class ImageNetDataset(torch.utils.data.Dataset):
         im = cv2.imread(fname)
         im_resized = np.array(self.transform(Image.fromarray(im)))
         I = im_resized.transpose(2, 0, 1) - means
-        
-        
         return I
 
     def __len__(self):
         return len(self.data_name_list)
 
     def __getitem__(self, idx): 
-        
-        
         img_name = os.path.join(self.dir+'/data', self.data_name_list[idx])
         image = self.load_and_prepare_image(img_name, 800, self.means)
         image = torch.from_numpy(image)
         return [image,torch.LongTensor([self.cluster_id[idx]])]
+
         
     
 def __resize(img,size):
@@ -245,14 +253,19 @@ if __name__ == '__main__':
     means = np.array([103.93900299, 116.77899933, 123.68000031], dtype=np.float32)[None, :, None, None]
     gpu_num = 0
     ImageNet_path = 'datasets/ImageNet/'
-    transform = transforms.Compose([
+    transform_train = transforms.Compose([
         transforms.Lambda(lambda x: __resize(x,np.random.randint(10)+850)),
         transforms.RandomCrop(800),
 
     ])
+    transform_val = transforms.Compose([
+        transforms.Lambda(lambda x: __resize(x,800)),
+        transforms.CenterCrop(800),
+
+    ])
     
-    dataSet_train = ImageNetDataset(dir= ImageNet_path + 'train',transform= transform, means = means)
-    dataSet_val = ImageNetDataset(dir= ImageNet_path + 'val',transform= transform, means = means)
+    dataSet_train = ImageNetDataset(dir= ImageNet_path + 'train',transform= transform_train, means = means, train_or_val = 'train')
+    dataSet_val = ImageNetDataset(dir= ImageNet_path + 'val',transform= transform_val, means = means, train_or_val = 'val')
     miniBatch_size = 4
     
     net = NetForTraining()
