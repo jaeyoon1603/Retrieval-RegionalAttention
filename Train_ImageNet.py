@@ -11,6 +11,7 @@ from os.path import join
 import Resnet
 from tqdm import tqdm
 import cv2
+import random
 from torchvision import transforms
 from Common import get_rmac_region_coordinates
 from Common import pack_regions_for_network
