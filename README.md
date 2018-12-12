@@ -5,7 +5,7 @@
 
 The project page is in https://sglab.kaist.ac.kr/RegionalAttention/
 
-Most of the code, such as evaluation code, R-MAC code, etc, are built upon [Deep Image Retrieval (ECCV, 2016)](https://github.com/figitaki/deep-retrieval).
+Some code, such as evaluation code, R-MAC code, etc, are built upon [Deep Image Retrieval (ECCV, 2016)](https://github.com/figitaki/deep-retrieval).
 
 Dependency
 --------------------------------------------------------------------------------------------------
